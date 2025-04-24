@@ -1,8 +1,8 @@
 from typing import Optional
-from stt_module import SpeechToText
-from vlm_module import VisionLanguageModel
-from debate_module import PromptSystem
-from host_module import TurtleSoupGame
+from modules.stt_module import SpeechToText
+from modules.vlm_module import VisionLanguageModel
+from modules.debate_module import PromptSystem
+from modules.host_module import TurtleSoupGame
 import argparse
 
 class UserInputManager:
