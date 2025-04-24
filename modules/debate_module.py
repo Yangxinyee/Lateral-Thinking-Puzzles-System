@@ -1,6 +1,6 @@
 import os
 import openai
-from debate_prompt import (
+from modules.debate_prompt import (
     SYSTEM_PROMPT,
     INITIAL_STORY_PROMPT,
     AGENT_A_PROMPT,
