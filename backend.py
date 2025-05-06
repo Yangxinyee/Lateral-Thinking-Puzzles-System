@@ -36,15 +36,15 @@ def root():
 @app.post("/api/start_game")
 async def start_game(
     text: Optional[str] = Form(None),
-    image_path: Optional[str] = None,
-    voice_text: Optional[str] = None
+    image_path: Optional[str] = Form(None),
+    voice_text: Optional[str] = Form(None)
 ):
     """
     Start a new game.
     Inputs:
     - text: optional text input
     - image: optional image path
-    - voice_text: optional voice to text
+    - voice_text: optional text transcribed from voice
     """
     keyword_segments = []
     if text:
@@ -144,5 +144,4 @@ async def user_input_post(user_input: UserInput):
         "response": answer,
         "truth": game_session.truth if game_session.is_game_over else None
     }
-
 
