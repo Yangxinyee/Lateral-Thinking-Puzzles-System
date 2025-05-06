@@ -23,7 +23,7 @@ class VisionLanguageModel:
                     "content": [
                         {
                             "type": "text",
-                            "text": "Describe this image in one sentence."
+                            "text": "Describe this image in one or two sentences. Do not simply list visible objects—instead, highlight any unusual, emotional, or contradictory elements that could hint at a hidden backstory. Focus on the scene’s setting, character actions or expressions, and anything that feels mysterious, out of place, or unexplained. The goal is to inspire a lateral thinking puzzle."
                         },
                         {
                             "type": "image_url",
@@ -38,6 +38,6 @@ class VisionLanguageModel:
         )
 
         # response_text = completion.choices[0].message['content']
-        response_text = completion.choices[0].message.content
+        response_text = completion.choices[0].message.content.strip()
         print("Extracted description:", response_text)
         return response_text
