@@ -30,7 +30,8 @@ class TurtleSoupGame:
             ],
             temperature=0.2
         )
-        return response.choices[0].message['content']
+        # return response.choices[0].message['content']
+        return response.choices[0].message.content
 
     def answer_question(self, puzzle: str, truth: str, question: str, story_analysis: str, history: list = None) -> str:
         system_prompt = (
@@ -66,7 +67,8 @@ class TurtleSoupGame:
             messages=messages,
             temperature=0.2
         )
-        return response.choices[0].message['content'].strip()
+        # return response.choices[0].message['content'].strip()
+        return response.choices[0].message.content.strip()
 
     def check_game_end(self, puzzle: str, truth: str, user_input: str, story_analysis: str, history_text: str) -> str:
         system_prompt = (
@@ -94,7 +96,8 @@ class TurtleSoupGame:
             messages=messages,
             temperature=0.2
         )
-        result = response.choices[0].message['content'].strip().lower()
+        # result = response.choices[0].message['content'].strip().lower()
+        result = response.choices[0].message.content.strip().lower()
         return "end" if "yes" in result else "continue"
 
     def start_game(self, puzzle: str, truth: str):

@@ -7,22 +7,26 @@ from modules.debate_prompt import (
     AGENT_B_PROMPT,
     JUDGE_PROMPT
 )
+from openai import OpenAI
 
 class PromptSystem:
     def __init__(self):
         openai.api_key = os.getenv("OPENAI_API_KEY")
-        self.client = openai.ChatCompletion
+        # self.client = openai.ChatCompletion
+        self.client = OpenAI(api_key=openai.api_key)
 
     def generate_story(self, keywords: str) -> dict:
         prompt = INITIAL_STORY_PROMPT.format(keywords_list=keywords)
-        response = self.client.create(
+        # response = self.client.create(
+        response = self.client.chat.completions.create(
             model="gpt-4",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": prompt}
             ]
         )
-        content = response.choices[0].message["content"]
+        # content = response.choices[0].message["content"]
+        content = response.choices[0].message.content
         scenario, solution = self._split_story(content)
         return {"scenario": scenario, "solution": solution}
 
@@ -31,31 +35,37 @@ class PromptSystem:
             scenario=story["scenario"],
             solution=story["solution"]
         )
-        response = self.client.create(
+        # response = self.client.create(
+        response = self.client.chat.completions.create(
             model="gpt-4",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": prompt}
             ]
         )
-        return response.choices[0].message["content"]
+        # return response.choices[0].message["content"]
+        return response.choices[0].message.content
 
     def agent_b_refine(self, story: dict, agent_a_feedback: str) -> dict:
         prompt = AGENT_B_PROMPT.format(
             scenario=story["scenario"],
             solution=story["solution"],
             agent_a_feedback=agent_a_feedback,
-            new_scenario=story["scenario"],
-            new_solution=story["solution"]
+            # new_scenario=story["scenario"],
+            # new_solution=story["solution"]
+            new_scenario='',
+            new_solution=''
         )
-        response = self.client.create(
+        # response = self.client.create(
+        response = self.client.chat.completions.create(
             model="gpt-4",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": prompt}
             ]
         )
-        content = response.choices[0].message["content"]
+        # content = response.choices[0].message["content"]
+        content = response.choices[0].message.content
         new_scenario, new_solution = self._split_story(content)
         return {"scenario": new_scenario, "solution": new_solution}
 
@@ -64,14 +74,16 @@ class PromptSystem:
             revised_scenario=story["scenario"],
             revised_solution=story["solution"]
         )
-        response = self.client.create(
+        # response = self.client.create(
+        response = self.client.chat.completions.create(
             model="gpt-4",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": prompt}
             ]
         )
-        content = response.choices[0].message["content"]
+        # content = response.choices[0].message["content"]
+        content = response.choices[0].message.content
         return "ACCEPT" if "<decision>ACCEPT</decision>" in content else "REVISE"
 
     def _split_story(self, content: str):

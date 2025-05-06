@@ -36,6 +36,7 @@ class VisionLanguageModel:
             max_tokens=512,
         )
 
-        response_text = completion.choices[0].message['content']
+        # response_text = completion.choices[0].message['content']
+        response_text = completion.choices[0].message.content
         print("Extracted description:", response_text)
         return response_text
