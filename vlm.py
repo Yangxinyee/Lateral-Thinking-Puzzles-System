@@ -11,7 +11,8 @@ img_url = "https://raw.githubusercontent.com/Wonder947/Public-Images/refs/heads/
 
 # get VLM response
 client = OpenAI(
-    base_url="https://router.huggingface.co/hf-inference/models/Qwen/Qwen2-VL-7B-Instruct/v1",
+    # base_url="https://router.huggingface.co/hf-inference/models/Qwen/Qwen2-VL-7B-Instruct/v1",
+    base_url="https://router.huggingface.co/nebius/v1",
     api_key=HF_API_KEY
 )
 

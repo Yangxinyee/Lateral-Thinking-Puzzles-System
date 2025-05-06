@@ -30,7 +30,8 @@ class TurtleSoupGame:
             ],
             temperature=0.2
         )
-        return response.choices[0].message['content']
+        # return response.choices[0].message['content']
+        return response.choices[0].message.content
 
     def answer_question(self, puzzle: str, truth: str, question: str, story_analysis: str, history: list = None) -> str:
         system_prompt = (
@@ -49,7 +50,8 @@ class TurtleSoupGame:
             "6. Stay coherent: keep your answers consistent with the past conversation\n"
             "7. Do not reason on your own—strictly base your answers on the story, story analysis, and dialogue history\n"
             "8. If you believe the user has already completed the full reasoning process based on the history and current question, say: "
-            "'You're very close to the truth. Please organize all your thoughts and tell me your final answer.'"
+            "'You've got the main idea right! Please organize all your thoughts and tell me your final answer.'"
+            "9. Make sure your tone sounds natural and human-like—don’t be too stiff or robotic. You should sound like a real host."
         )
 
         messages = [
@@ -66,7 +68,8 @@ class TurtleSoupGame:
             messages=messages,
             temperature=0.2
         )
-        return response.choices[0].message['content'].strip()
+        # return response.choices[0].message['content'].strip()
+        return response.choices[0].message.content.strip()
 
     def check_game_end(self, puzzle: str, truth: str, user_input: str, story_analysis: str, history_text: str) -> str:
         system_prompt = (
@@ -94,7 +97,8 @@ class TurtleSoupGame:
             messages=messages,
             temperature=0.2
         )
-        result = response.choices[0].message['content'].strip().lower()
+        # result = response.choices[0].message['content'].strip().lower()
+        result = response.choices[0].message.content.strip().lower()
         return "end" if "yes" in result else "continue"
 
     def start_game(self, puzzle: str, truth: str):

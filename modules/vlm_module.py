@@ -8,7 +8,8 @@ class VisionLanguageModel:
         hf_api_key = os.getenv('HF_TOKEN')
 
         self.client = OpenAI(
-            base_url="https://router.huggingface.co/hf-inference/models/Qwen/Qwen2-VL-7B-Instruct/v1",
+            # base_url="https://router.huggingface.co/hf-inference/models/Qwen/Qwen2-VL-7B-Instruct/v1",
+            base_url="https://router.huggingface.co/nebius/v1",
             api_key=hf_api_key
         )
 
@@ -36,6 +37,7 @@ class VisionLanguageModel:
             max_tokens=512,
         )
 
-        response_text = completion.choices[0].message['content']
+        # response_text = completion.choices[0].message['content']
+        response_text = completion.choices[0].message.content
         print("Extracted description:", response_text)
         return response_text

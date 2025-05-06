@@ -1,3 +1,4 @@
+# prompt.py
 
 SYSTEM_PROMPT = """
 You are the system orchestrating an AI-powered lateral thinking puzzle generator.  
@@ -13,7 +14,7 @@ INITIAL_STORY_PROMPT = """
 System: You are an expert storyteller.  
 User Keywords: {keywords_list}  
 Task: Using the keywords above, generate a **Start Scenario** and a **Final Solution** for a lateral thinking puzzle.  
-- The **Start Scenario** must introduce a perplexing situation.  
+- The **Start Scenario** must introduce a perplexing situation.  Keep the **Start Scenario** concise (about 2–3 sentences).
 - The **Final Solution** must reveal the hidden truth that resolves the mystery.  
 Format your response as:
 
