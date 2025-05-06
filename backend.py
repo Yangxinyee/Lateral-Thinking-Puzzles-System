@@ -37,22 +37,22 @@ def root():
 async def start_game(
     text: Optional[str] = Form(None),
     image_path: Optional[str] = None,
-    use_voice: Optional[bool] = Form(False)
+    voice_text: Optional[str] = None
 ):
     """
     Start a new game.
     Inputs:
     - text: optional text input
     - image: optional image path
-    - use_voice: optional boolean flag
+    - voice_text: optional voice to text
     """
     keyword_segments = []
     if text:
         keyword_segments.append(game_system.input_manager.from_text(text))
     if image_path:
         keyword_segments.append(game_system.input_manager.from_image(image_path))
-    if use_voice:
-        keyword_segments.append(game_system.input_manager.from_voice())
+    if voice_text:
+        keyword_segments.append(voice_text.strip())
 
     if not keyword_segments:
         return {"error": "You must provide at least one input: text, image, or voice."}

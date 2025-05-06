@@ -50,7 +50,8 @@ class TurtleSoupGame:
             "6. Stay coherent: keep your answers consistent with the past conversation\n"
             "7. Do not reason on your own—strictly base your answers on the story, story analysis, and dialogue history\n"
             "8. If you believe the user has already completed the full reasoning process based on the history and current question, say: "
-            "'You're very close to the truth. Please organize all your thoughts and tell me your final answer.'"
+            "'You've got the main idea right! Please organize all your thoughts and tell me your final answer.'"
+            "9. Make sure your tone sounds natural and human-like—don’t be too stiff or robotic. You should sound like a real host."
         )
 
         messages = [
