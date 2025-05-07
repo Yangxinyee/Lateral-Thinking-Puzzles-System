@@ -1,4 +1,5 @@
 # Interactive Storytelling System for Lateral Thinking Puzzles
+## [Demo Link](https://ff784baff100669b45.gradio.live)
 
 ## Abstract
 This project explores AI applications in multimodal interaction and lateral thinking reasoning, aiming to develop
