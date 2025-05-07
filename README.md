@@ -1,5 +1,5 @@
 # Interactive Storytelling System for Lateral Thinking Puzzles
-## [Demo Link](https://ff784baff100669b45.gradio.live)
+## [Demo Link](https://ff784baff100669b45.gradio.live) There is no public server. So when you need to check the demo, please contact us :)
 
 ## Abstract
 This project explores AI applications in multimodal interaction and lateral thinking reasoning, aiming to develop
@@ -15,7 +15,7 @@ games, enabling dynamic story adjustments and creative
 storytelling. This project advances AI’s role in creative
 thinking, logical reasoning, and human-AI co-creation, offering new insights into AI-driven storytelling and interactive entertainment.
 
-## 🔧 Lateral Thinking Puzzles System Environment Setup
+## 🔧 Lateral Thinking Puzzles System Python Environment Setup
 
 ### 1. Clone or download the project
 ```bash
